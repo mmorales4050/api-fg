@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :vendors
+  resources :weapons
+  resources :users
+  resources :spells
+  resources :shields
   resources :pets
   resources :monsters
   resources :miscs
