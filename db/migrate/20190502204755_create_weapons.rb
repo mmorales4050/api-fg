@@ -1,24 +1,23 @@
 class CreateWeapons < ActiveRecord::Migration[5.1]
   def change
     create_table :weapons do |t|
-      t.integer :ItemId
-      t.string :ItemName
-      t.string :ItemDesc
-      t.string :ItemElement
-      t.string :ItemType
-      t.integer :ItemPowerLevel
-      t.integer :ItemLevel
-      t.integer :ItemPowerExp
-      t.integer :Dropable
-      t.integer :BuyType
-      t.integer :HoursOwned
-      t.integer :BaseDamage
-      t.integer :RandomDamage
-      t.integer :ItemBonus
-      t.integer :Buyable
-      t.string :Extra
-      t.integer :Price
-      t.integer :SellPrice
+      t.string :name
+      t.string :item_desc
+      t.string :item_element
+      t.string :item_type
+      t.integer :item_power_level
+      t.integer :item_level
+      t.integer :item_power_exp
+      t.integer :dropable
+      t.integer :buy_type
+      t.integer :hours_owned
+      t.integer :base_damage
+      t.integer :random_damage
+      t.integer :item_bonus
+      t.integer :buyable
+      t.string :extra
+      t.integer :price
+      t.integer :sell_price
 
       t.timestamps
     end

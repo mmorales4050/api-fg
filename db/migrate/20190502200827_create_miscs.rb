@@ -2,7 +2,7 @@ class CreateMiscs < ActiveRecord::Migration[5.1]
   def change
     create_table :miscs do |t|
       t.integer :ItemId
-      t.string :ItemName
+      t.string :name
       t.string :ItemDesc
       t.string :ItemElement
       t.string :ItemType
