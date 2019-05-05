@@ -21,7 +21,7 @@ Weapon.new(base_damage: 1, name: "Long Sword", item_desc: "A sturdy blade with a
 
 # Monster damage table
 
-damageTable = {0 => [3, 5, 0], 1 => [3, 5, 0], 3 => [4, 5, 0], 4 => [4,5,1], 5 => [4,5,1], 6 => [3,9,1], 7 => [7,1,1], 9 => [5,8,2], 10 => [4,9,1], 12 => [5,8,2], 13 => [5,8,2], 15 => [5,10,2], 16 => [5,11,2], 18 => [7,8,2], 20 => [6,11,3], 25 => [6,13,3], 30 => [7,13,4], 35 => [4,21,4], 36 => [7,15,5], 40 => [8,15,5], 60 => [9,19,8], 63 => [13,12,8], 64 => [7,25,8], 65 => [10,19,8], 68 => [16,8,9], 69 => [10,20,9], 70 => [18,5,9], 75 => [13,16,9], 80 => [7,30,10], 85 => []}
+damage_table = {0 => [3, 5, 0], 1 => [3, 5, 0], 3 => [4, 5, 0], 4 => [4,5,1], 5 => [4,5,1], 6 => [3,9,1], 7 => [7,1,1], 9 => [5,8,2], 10 => [4,9,1], 12 => [5,8,2], 13 => [5,8,2], 15 => [5,10,2], 16 => [5,11,2], 18 => [7,8,2], 20 => [6,11,3], 25 => [6,13,3], 30 => [7,13,4], 35 => [4,21,4], 36 => [7,15,5], 38 => [7,16,5], 40 => [8,15,5], 60 => [9,19,8], 63 => [13,12,8], 64 => [7,25,8], 65 => [10,19,8], 68 => [16,8,9], 69 => [10,20,9], 70 => [18,5,9], 75 => [13,16,9], 80 => [7,30,10], 85 => [11,23,11], 90 => [12,23,11], 95 => [19,10,12]}
 # Create Monsters
 require 'nokogiri'
 require 'open-uri'
@@ -70,7 +70,8 @@ monster_index.css("li").each do |element|
     light = monster_elements[14].chomp("%").to_i - 100
     darkness = monster_elements[16].chomp("%").to_i - 100
 
-    Monster.new(name: monster_name, monster_desc: monster_details, level: monster_level, hp: monster_hp, mp: monster_mp, gold: monster_gold, exp: monster_exp, stre: str, dext: dex, inte: int, endu: endurance, char: charisma, luck: luck, armor_melee: melee_def, armor_ranged: ranged_def, armor_magic: magic_def, armor_fire: fire, armor_water: water, armor_wind: wind, armor_ice: ice, armor_earth: earth, armor_energy: energy, armor_light: light, armor_darkness: darkness, extra_data: monster_url).save(validate: false)
+    
+    Monster.new(name: monster_name, monster_desc: monster_details, level: monster_level, hp: monster_hp, mp: monster_mp, gold: monster_gold, exp: monster_exp, stre: str, dext: dex, inte: int, endu: endurance, char: charisma, luck: luck, armor_melee: melee_def, armor_ranged: ranged_def, armor_magic: magic_def, armor_fire: fire, armor_water: water, armor_wind: wind, armor_ice: ice, armor_earth: earth, armor_energy: energy, armor_light: light, armor_darkness: darkness, extra_data: monster_url, base_damage: damage_table[monster_level][0], rand_damage: damage_table[monster_level][1], bonus_to_hit: damage_table[monster_level][2]).save(validate: false)
   end
 
 
