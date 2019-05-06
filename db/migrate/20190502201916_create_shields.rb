@@ -1,31 +1,30 @@
 class CreateShields < ActiveRecord::Migration[5.1]
   def change
     create_table :shields do |t|
-      t.integer :ItemId
-      t.string :ItemName
-      t.string :ItemDesc
-      t.string :ItemElement
-      t.string :ItemType
-      t.integer :Price
-      t.integer :SellPrice
-      t.integer :Dropable
-      t.integer :PowerLevel
-      t.integer :ItemLevel
-      t.integer :BuyType
-      t.integer :Buyable
-      t.integer :HoursOwned
-      t.string :Extra
-      t.integer :ArmorFire
-      t.integer :ArmorWater
-      t.integer :ArmorIce
-      t.integer :ArmorWind
-      t.integer :ArmorEarth
-      t.integer :ArmorEnergy
-      t.integer :ArmorLight
-      t.integer :ArmorDarkness
-      t.integer :ArmorMelee
-      t.integer :ArmorRanged
-      t.integer :ArmorMagic
+      t.string :name
+      t.string :item_desc
+      t.string :item_element
+      t.string :item_type
+      t.integer :price
+      t.integer :sell_price
+      t.integer :dropable
+      t.integer :power_level
+      t.integer :item_level
+      t.integer :buy_type
+      t.integer :buyable
+      t.integer :hours_owned
+      t.string :extra
+      t.integer :armor_fire
+      t.integer :armor_water
+      t.integer :armor_ice
+      t.integer :armor_wind
+      t.integer :armor_earth
+      t.integer :armor_energy
+      t.integer :armor_light
+      t.integer :armor_darkness
+      t.integer :armor_melee
+      t.integer :armor_ranged
+      t.integer :armor_magic
 
       t.timestamps
     end

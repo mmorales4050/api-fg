@@ -12,14 +12,14 @@ class CreateCharacters < ActiveRecord::Migration[5.1]
       t.string :chartype
       t.integer :gold
       t.integer :tokens
-      t.integer :strength
-      t.integer :dexterity
-      t.integer :intelligence
-      t.integer :charm
-      t.integer :endurance
+      t.integer :stre
+      t.integer :dext
+      t.integer :inte
+      t.integer :char
+      t.integer :endu
       t.integer :luck
       t.string :race
-      t.string :subrace
+      t.string :sub_race
       t.string :clan
       t.string :createdday
       t.string :createddate
