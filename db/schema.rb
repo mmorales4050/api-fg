@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190502204918) do
+ActiveRecord::Schema.define(version: 20190506210500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,10 +44,25 @@ ActiveRecord::Schema.define(version: 20190502204918) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "character_armors", force: :cascade do |t|
+    t.integer "character_id"
+    t.integer "armor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "character_weapons", force: :cascade do |t|
+    t.integer "character_id"
+    t.integer "weapon_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.integer "level"
     t.integer "exp"
+    t.integer "exp_needed"
     t.string "username"
     t.integer "type"
     t.integer "face"
@@ -125,7 +140,7 @@ ActiveRecord::Schema.define(version: 20190502204918) do
     t.string "elements"
     t.string "types"
     t.integer "base_damage"
-    t.integer "rand_damage"
+    t.integer "random_damage"
     t.integer "bonus_to_hit"
     t.integer "armor_fire"
     t.integer "armor_water"

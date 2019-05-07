@@ -11,15 +11,18 @@ Armor.destroy_all
 Monster.destroy_all
 Weapon.destroy_all
 Shield.destroy_all
+CharacterWeapon.destroy_all
+CharacterArmor.destroy_all
 
-Character.new(name: "Character1", level: 1, exp: 0, klass: "Adventurer", race: "Human", sub_race: "None", clan: "None", stre: 0, dext: 0, inte: 0, endu: 0, char: 0, luck: 0, gold: 0).save(validate: false)
+Character.new(name: "Character1", level: 1, exp: 0,  exp_needed: 110, klass: "Adventurer", race: "Human", sub_race: "None", clan: "None", stre: 0, dext: 0, inte: 0, endu: 0, char: 0, luck: 0, gold: 0).save(validate: false)
 
 #Armor.new(name: "Steel Plate", armor_earth: -10, item_desc: "Basic steel armor").save(validate: false)
 
 #Monster.new(name: "Creature", monster_desc: "A strange looking creature", base_damage: 1, health: 50, armor_earth: 0).save(validate: false)
 
-#Weapon.new(base_damage: 1, name: "Long Sword", item_desc: "A sturdy blade with a curved handle").save(validate: false)
+Weapon.new(base_damage: 1, random_damage: 18, name: "Long Sword", item_desc: "A sturdy blade with a curved handle", item_element: "Earth", item_type: "Melee", extra: "http://media.artix.com/encyc/AQ/AQPedia2/Weapons/Long_Sword.jpg", item_level: 0, price: 2, sell_price: 0).save(validate: false)
 
+CharacterWeapon.create(character_id: Character.all[0].id, weapon_id: Weapon.all[0].id)
 # Create Monsters
 require 'nokogiri'
 require 'open-uri'
@@ -72,7 +75,7 @@ def create_monsters
       darkness = monster_elements[16].chomp("%").to_i - 100
 
 
-      Monster.new(name: monster_name, monster_desc: monster_details, level: monster_level, hp: monster_hp, mp: monster_mp, gold: monster_gold, exp: monster_exp, stre: str, dext: dex, inte: int, endu: endurance, char: charisma, luck: luck, armor_melee: melee_def, armor_ranged: ranged_def, armor_magic: magic_def, armor_fire: fire, armor_water: water, armor_wind: wind, armor_ice: ice, armor_earth: earth, armor_energy: energy, armor_light: light, armor_darkness: darkness, extra_data: monster_url, base_damage: damage_table[monster_level][0], rand_damage: damage_table[monster_level][1], bonus_to_hit: damage_table[monster_level][2]).save(validate: false)
+      Monster.new(name: monster_name, monster_desc: monster_details, level: monster_level, hp: monster_hp, mp: monster_mp, gold: monster_gold, exp: monster_exp, stre: str, dext: dex, inte: int, endu: endurance, char: charisma, luck: luck, armor_melee: melee_def, armor_ranged: ranged_def, armor_magic: magic_def, armor_fire: fire, armor_water: water, armor_wind: wind, armor_ice: ice, armor_earth: earth, armor_energy: energy, armor_light: light, armor_darkness: darkness, extra_data: monster_url, base_damage: damage_table[monster_level][0], random_damage: damage_table[monster_level][1], bonus_to_hit: damage_table[monster_level][2]).save(validate: false)
     end
   end
 end
@@ -182,3 +185,5 @@ def get_weapon_items(url)
 end
 
 get_weapon_items("http://zardwarsrevival.nfshost.com/encyclopedia.php?e=weapons")
+
+CharacterArmor.create(character_id: Character.all[0].id, armor_id: Armor.all.find{ |i| i.name == "Frogzard Hunter"}.id)

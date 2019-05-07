@@ -19,7 +19,7 @@ class CreateMonsters < ActiveRecord::Migration[5.1]
       t.string :elements
       t.string :types
       t.integer :base_damage
-      t.integer :rand_damage
+      t.integer :random_damage
       t.integer :bonus_to_hit
       t.integer :armor_fire
       t.integer :armor_water

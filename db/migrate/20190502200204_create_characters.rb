@@ -4,6 +4,7 @@ class CreateCharacters < ActiveRecord::Migration[5.1]
       t.string :name
       t.integer :level
       t.integer :exp
+      t.integer :exp_needed
       t.string :username
       t.integer :type
       t.integer :face
