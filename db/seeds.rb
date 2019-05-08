@@ -20,7 +20,7 @@ Character.new(name: "Character1", level: 1, exp: 0,  exp_needed: 110, klass: "Ad
 
 #Monster.new(name: "Creature", monster_desc: "A strange looking creature", base_damage: 1, health: 50, armor_earth: 0).save(validate: false)
 
-Weapon.new(base_damage: 1, random_damage: 18, name: "Long Sword", item_desc: "A sturdy blade with a curved handle", item_element: "Earth", item_type: "Melee", extra: "http://media.artix.com/encyc/AQ/AQPedia2/Weapons/Long_Sword.jpg", item_level: 0, price: 2, sell_price: 0).save(validate: false)
+Weapon.new(base_damage: 1, random_damage: 18, name: "LonG_Sword", item_desc: "A sturdy blade with a curved handle", item_element: "Earth", item_type: "Melee", extra: "http://media.artix.com/encyc/AQ/AQPedia2/Weapons/Long_Sword.jpg", item_level: 0, price: 2, sell_price: 0).save(validate: false)
 
 CharacterWeapon.create(character_id: Character.all[0].id, weapon_id: Weapon.all[0].id)
 # Create Monsters
@@ -74,8 +74,11 @@ def create_monsters
       light = monster_elements[14].chomp("%").to_i - 100
       darkness = monster_elements[16].chomp("%").to_i - 100
 
+      monster_attack = item.next_element.next_element.next_element.next_element.next_element.next_element.next_element.text.split(" ")
 
-      Monster.new(name: monster_name, monster_desc: monster_details, level: monster_level, hp: monster_hp, mp: monster_mp, gold: monster_gold, exp: monster_exp, stre: str, dext: dex, inte: int, endu: endurance, char: charisma, luck: luck, armor_melee: melee_def, armor_ranged: ranged_def, armor_magic: magic_def, armor_fire: fire, armor_water: water, armor_wind: wind, armor_ice: ice, armor_earth: earth, armor_energy: energy, armor_light: light, armor_darkness: darkness, extra_data: monster_url, base_damage: damage_table[monster_level][0], random_damage: damage_table[monster_level][1], bonus_to_hit: damage_table[monster_level][2]).save(validate: false)
+      weapon_element = monster_attack[5]
+
+      Monster.new(name: monster_name, monster_desc: monster_details, weapon_element: weapon_element, level: monster_level, hp: monster_hp, mp: monster_mp, gold: monster_gold, exp: monster_exp, stre: str, dext: dex, inte: int, endu: endurance, char: charisma, luck: luck, armor_melee: melee_def, armor_ranged: ranged_def, armor_magic: magic_def, armor_fire: fire, armor_water: water, armor_wind: wind, armor_ice: ice, armor_earth: earth, armor_energy: energy, armor_light: light, armor_darkness: darkness, extra_data: monster_url, base_damage: damage_table[monster_level][0], random_damage: damage_table[monster_level][1], bonus_to_hit: damage_table[monster_level][2]).save(validate: false)
     end
   end
 end
